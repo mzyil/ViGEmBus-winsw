@@ -33,7 +33,7 @@ build_script:
 after_build:
 - cmd: makecab.exe /f ViGEmBus_%PLATFORM%.ddf
 artifacts:
-- path: 'bin**\*
+- path: 'bin**\*'
 - path: 'disk1\*.cab'
 deploy:
 - provider: Environment
