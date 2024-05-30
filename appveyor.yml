@@ -21,7 +21,6 @@ install:
 - cmd: |
     cd "C:\projects\DMF"
     git checkout 99f81dd547cb8bb4513e8d79e766d00dfd7b1b41
-    git pull > NUL
     git apply --reject "%APPVEYOR_BUILD_FOLDER%\patches\dmf.diff
     cd %appveyor_build_folder%
 before_build:
