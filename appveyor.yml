@@ -36,9 +36,9 @@ after_build:
     cd %APPVEYOR_BUILD_FOLDER%\bin\x64\ViGEmBus
     dir "D:\Program Files (x86)\Windows Kits\10\bin\"
     "C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\makecert.exe" -r -pe -ss PrivateCertStore -n CN=Contoso.com ContosoTest.cer
-    Import-Certificate -FilePath "ViGEmBus.cat" -CertStoreLocation Cert:\LocalMachine\PrivateCertStore
-    "C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe" sign /v /fd SHA256 /s PrivateCertStore /n Contoso.com /t http://timestamp.digicert.com ViGEmBus.cat
-    "C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe" sign /v /fd SHA256 /s PrivateCertStore /n Contoso.com /t http://timestamp.digicert.com ViGEmBus.sys
+    CertMgr.exe /add ContosoTest.cer /s /r localMachine trustedpublisher
+    "C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe" sign /v /fd SHA256 /s "Trusted Publishers" /n Contoso.com /t http://timestamp.digicert.com ViGEmBus.cat
+    "C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe" sign /v /fd SHA256 /s "Trusted Publishers" /n Contoso.com /t http://timestamp.digicert.com ViGEmBus.sys
 artifacts:
 - path: 'bin**\*'
 - path: 'disk1\*.cab'
