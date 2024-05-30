@@ -8,9 +8,8 @@ cache:
 - C:\projects\DMF
 - C:\projects\ViGEmBus\vpatch.exe
 platform:
-- x86
 - x64
-- ARM64
+- x86
 max_jobs: 3
 configuration:
 - Release
@@ -34,6 +33,7 @@ after_build:
 - cmd: makecab.exe /f ViGEmBus_%PLATFORM%.ddf
 artifacts:
 - path: 'bin**\*'
+- path: '**\bin**\*'
 - path: 'disk1\*.cab'
 deploy:
 - provider: Environment
