@@ -11,6 +11,7 @@ platform:
 - x86
 - x64
 - ARM64
+max
 configuration:
 - Release
 environment:
@@ -32,9 +33,7 @@ build_script:
 after_build:
 - cmd: makecab.exe /f ViGEmBus_%PLATFORM%.ddf
 artifacts:
-- path: 'bin**\$(APPVEYOR_PROJECT_NAME)\*.inf'
-- path: 'bin**\$(APPVEYOR_PROJECT_NAME)\*.sys'
-- path: 'bin**\*.pdb'
+- path: 'bin**\*
 - path: 'disk1\*.cab'
 deploy:
 - provider: Environment
