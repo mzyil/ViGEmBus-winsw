@@ -35,8 +35,8 @@ after_build:
 - cmd: |
     cd %APPVEYOR_BUILD_FOLDER%\bin\x64\ViGEmBus
     dir "D:\Program Files (x86)\Windows Kits\10\bin\"
-    "C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\makecert.exe" -r -pe -ss PrivateCertStore -n CN=ViGEmBusTest ContosoTest.cer
-    CertMgr.exe /add ContosoTest.cer /s /r localMachine trustedpublisher
+    "C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\makecert.exe" -r -pe -ss "Trusted Publishers" -n CN=ViGEmBusTest ViGEmBusTest.cer
+    "C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\CertMgr.exe" /add ViGEmBusTest.cer /s /r localMachine trustedpublisher
     "C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe" sign /v /fd SHA256 /s "Trusted Publishers" /n ViGEmBusTest /t http://timestamp.digicert.com ViGEmBus.cat
     "C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe" sign /v /fd SHA256 /s "Trusted Publishers" /n ViGEmBusTest /t http://timestamp.digicert.com ViGEmBus.sys
 artifacts:
