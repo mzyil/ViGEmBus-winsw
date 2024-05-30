@@ -11,7 +11,7 @@ platform:
 - x86
 - x64
 - ARM64
-max
+max_jobs: 3
 configuration:
 - Release
 environment:
